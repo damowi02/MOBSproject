@@ -3,7 +3,8 @@ body{
     display: grid;
     grid-template-rows: 8vh auto 20vh;
     grid-template-areas: "header""main""footer";
-    background-color: rgba(194, 190, 190, 0.4);
+    grid-template-columns: auto;
+    background-color: rgba(68, 59, 59, 0.4);
     font-family: 'Helvetica Neue', sans-serif;
   
 }
@@ -18,23 +19,26 @@ header{
  
 main{
     grid-area: main;
+    display: grid;
     grid-template-areas: "a b c" "d e f" "g h i";
     grid-template-columns: 2fr 8fr 2fr;
     grid-template-rows: 1fr 10fr 1fr;
+    overflow: hidden;
 }
  
 footer{
     grid-area: footer;
     display: grid;
+    grid-template-rows: 1fr;
     grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
-    grid-template-areas: "Data Navi Cupra Musik setting";
+    grid-template-areas: "Data Navi Cupra Music Setting ";
 }
 
-main div.CupraFrontPic {
-   grid-area: e;
-   margin: 0px;
-   width: 100%;
-   height:100%;
+.CupraFrontPic {
+   grid-area: e; 
+   background-image: url("https://www.seat-mediacenter.de/content/smc-countries/de/website/de/newspage/allnews/cupranewspage/news/news/cuprabrand/cupra-marke/2019/cupra-tavascan-concept/_jcr_content/centerColumn/multimediagallery_b9/singlePhoto-1/imageCrop1.resizeViewPort.crop.mobileAspectRatio..fileReference.jpg");
+    width:100%;
+	height:auto;
 
 }
 .DatumundUhrzeit {
@@ -51,18 +55,34 @@ main div.CupraFrontPic {
  vertical-align: middle;
 }
  
-#DataButton{
+#Data{
     grid-area: Data;
+    margin: auto;
+    width: auto;
+    height:auto;
+    
 }
-#NaviButton{
+#Navi{
     grid-area: Navi;
+    margin: auto;
+    width: auto;
+    height:auto;
 }
-#CupraButton{
+#Cupra{
     grid-area: Cupra;
+    margin: auto;
+    width: auto;
+    height:auto;
 }
-#MusikButton{
+#Music{
     grid-area: Music;
+    margin: auto;
+    width: auto;
+    height:auto;
 }
-#settingButton{
-    grid-area: Car-Func;
+#Setting{
+    grid-area: Setting;
+    margin: auto;
+    width: auto;
+    height:auto;
 }
