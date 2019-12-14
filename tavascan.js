@@ -32,3 +32,65 @@ function DateandTime() {
     var TodayTime = h + ":" + m + ":" + s;
     document.getElementById("Zeit").innerHTML = TodayTime;
 }
+ 
+ 
+document.querySelector("footer").addEventListener("click", ButtonFunction);
+ 
+function ButtonFunction() {
+ 
+    document.getElementsByClassName("CupraHome")[0].style.display = "none";
+    document.getElementsByClassName("CarInstrument")[0].style.display = "none";
+    document.getElementsByClassName("NaviFront")[0].style.display = "none";
+    document.getElementsByClassName("MusicFront")[0].style.display="none";
+    document.getElementsByClassName("CarFunctionsFront")[0].style.display="none";
+ 
+    switch (event.target.id) {
+ 
+        case "DataB":
+        case "Info":
+            CreateVelocityandFuel();
+            break;
+ 
+        case "NaviB":
+        case "NaviInfo":
+            CreateNavi();
+            break;
+ 
+        case "CupraB":
+        case "CupraInfo":
+            ShowCupraHomePage();
+            break;
+ 
+        case "MusicB":
+        case "MusicInfo":
+            CreatMusic();
+            break;
+ 
+        case "SettingB":
+        case "SettingInfo":
+            CreateSettingFunction();
+            break;
+    };
+};
+ 
+function CreateVelocityandFuel() {
+    document.getElementsByClassName("CarInstrument")[0].style.display = "grid";
+ 
+};
+ 
+function CreateNavi() {
+    document.getElementsByClassName("NaviFront")[0].style.display = "block";
+ 
+};
+ 
+function ShowCupraHome() {
+    document.getElementsByClassName("CupraHome")[0].style.display = "block";
+ 
+};
+function CreatMusic(){
+    document.getElementsByClassName("MusicFront")[0].style.display="block";
+};
+ 
+function CreateCarFunction(){
+    document.getElementsByClassName("CarFunctionsFront")[0].style.display="grid";
+}

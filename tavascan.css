@@ -13,76 +13,108 @@ header{
    grid-area: header;
    display: grid;
    grid-template-columns: auto auto;
-   grid-template-areas: "Datum Zeit"; 
+   grid-template-areas: "Datum Zeit";
  
 }
  
 main{
     grid-area: main;
-    display: grid;
-    grid-template-areas: "a b c" "d e f" "g h i";
-    grid-template-columns: 2fr 8fr 2fr;
-    grid-template-rows: 1fr 10fr 1fr;
-    overflow: hidden;
 }
  
 footer{
     grid-area: footer;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
+    grid-template-columns: repeat(5,20%);
     grid-template-areas: "Data Navi Cupra Music Setting ";
-}
-
-.CupraFrontPic {
-   grid-area: e; 
-   background-image: url("https://www.seat-mediacenter.de/content/smc-countries/de/website/de/newspage/allnews/cupranewspage/news/news/cuprabrand/cupra-marke/2019/cupra-tavascan-concept/_jcr_content/centerColumn/multimediagallery_b9/singlePhoto-1/imageCrop1.resizeViewPort.crop.mobileAspectRatio..fileReference.jpg");
-    width:100%;
-	height:auto;
-
 }
 .DatumundUhrzeit {
     text-align: center;
-    font-size: 200%; 
-    margin: auto; 
+    font-size: 300%; 
+    margin: auto;
+    border-color: black;
+    border-radius: 15px;
+    color: whitesmoke;
+    background-color: black; 
     }
+.CupraHome {
+    height: 100%;
+    position: relative;
+}
+.CupraFront{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+.CarInstrument{
+    display:none;
+    height: 100%;
+    grid-area:"Gas Verbrauch","Velocity KMH","Temperature GradCelsius","Humidity Feuchtigkeit","Pressure Pascal";
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(5,20%);
+}
+.DataInfo{
+    height: 100%;
+    position: relative;
+}
+.Data{
+    max-width: 15%;
+    height: auto;
+    position: absolute;
+    border-radius: 15px;
+    top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+.NaviFront{
+    height: 100%;
+    display: none;
+    position: relative; 
+}
+iframe{
+position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
  
+.MusicFront{
+    display: none;
+    height: 100%;
+    position: relative;
+} 
+
+.button{
+ height: 100%;
+ position: relative;
+ }
 .icons{
     max-width: 60%;
   height: auto;
   display: flex;
- margin: auto;
- vertical-align: middle;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ border-radius: 20px;
 }
  
-#Data{
-    grid-area: Data;
-    margin: auto;
-    width: auto;
-    height:auto;
-    
+#DataB{
+    grid-area: Data;  
 }
-#Navi{
-    grid-area: Navi;
-    margin: auto;
-    width: auto;
-    height:auto;
+#NaviB{
+    grid-area: Navi;   
 }
-#Cupra{
-    grid-area: Cupra;
-    margin: auto;
-    width: auto;
-    height:auto;
+#CupraB{
+    grid-area: Cupra;   
 }
-#Music{
-    grid-area: Music;
-    margin: auto;
-    width: auto;
-    height:auto;
+#MusicB{
+    grid-area: Music;  
 }
-#Setting{
-    grid-area: Setting;
-    margin: auto;
-    width: auto;
-    height:auto;
+#SettingB{
+    grid-area: Setting;  
 }
