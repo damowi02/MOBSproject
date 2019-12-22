@@ -1,96 +1,63 @@
-var update_loop = setInterval(DateandTime, 1000);
- 
-function DateandTime() {
+const updateDatumZeitfunction = setInterval(DatumZeit, 1000);
+function DatumZeit(){
     var today = new Date();
     var d = today.getDate();
     var m = today.getMonth() + 1;
-    var y = today.getFullYear() + 1;
- 
-    var TodayDay = d + "." + m + "." + y;
-    document.getElementById("Datum").innerHTML = TodayDay;
- 
+    var y = today.getFullYear();
+
+    if(m<10){ m = "0" + m;}
+    else{m};
+
+    var Today = d + "." + m + "." + y;
+    document.getElementById("Date").innerHTML = Today;
+
     var time = new Date();
- 
-    if (time.getHours() < 10) {
-        var h = "0" + time.getHours();
-    }
-    else {
-        var h = time.getHours();
-    };
-    if (time.getMinutes() < 10) {
-        var m = "0" + time.getMinutes();
-    }
-    else {
-        var m = time.getMinutes();
-    };
-    if (time.getSeconds() < 10) {
-        var s = "0" + time.getSeconds();
-    }
-    else {
-        var s = time.getSeconds();
-    };
-    var TodayTime = h + ":" + m + ":" + s;
-    document.getElementById("Zeit").innerHTML = TodayTime;
+    var h = time.getHours();
+    var min = time.getMinutes();
+    var s = time.getSeconds();
+
+    if(h<10){h = "0" + h;}
+    else{h};
+    if(min<10){min = "0" + min;}
+    else{min};
+    if(s<10){s = "0" + s;}
+    else{s};
+
+    var CurrentTime = h + ":" + min + ":" + s;
+    document.getElementById("Time").innerHTML = CurrentTime;
+    
 }
- 
- 
-document.querySelector("footer").addEventListener("click", ButtonFunction);
- 
-function ButtonFunction() {
- 
-    document.getElementsByClassName("CupraHome")[0].style.display = "none";
-    document.getElementsByClassName("CarInstrument")[0].style.display = "none";
-    document.getElementsByClassName("NaviFront")[0].style.display = "none";
-    document.getElementsByClassName("MusicFront")[0].style.display="none";
-    document.getElementsByClassName("CarFunctionsFront")[0].style.display="none";
- 
+
+
+
+function handleClicks(event) {
+
     switch (event.target.id) {
- 
-        case "DataB":
-        case "Info":
-            CreateVelocityandFuel();
+
+        case "CupraButton":
+            HomeFunction();
             break;
- 
-        case "NaviB":
-        case "NaviInfo":
-            CreateNavi();
+        
+        case "DataButton":
+            ShowDataInfo();
             break;
- 
-        case "CupraB":
-        case "CupraInfo":
-            ShowCupraHomePage();
+        
+        case "MusicButton":
+            PlayMusic();
             break;
- 
-        case "MusicB":
-        case "MusicInfo":
-            CreatMusic();
+        
+        case "CarFunctionButton":
+            ControlCarFunctions();
             break;
- 
-        case "SettingB":
-        case "SettingInfo":
-            CreateSettingFunction();
-            break;
-    };
-};
- 
-function CreateVelocityandFuel() {
-    document.getElementsByClassName("CarInstrument")[0].style.display = "grid";
- 
-};
- 
-function CreateNavi() {
-    document.getElementsByClassName("NaviFront")[0].style.display = "block";
- 
-};
- 
-function ShowCupraHome() {
-    document.getElementsByClassName("CupraHome")[0].style.display = "block";
- 
-};
-function CreatMusic(){
-    document.getElementsByClassName("MusicFront")[0].style.display="block";
-};
- 
-function CreateCarFunction(){
-    document.getElementsByClassName("CarFunctionsFront")[0].style.display="grid";
+
+    }
+}
+
+function HomeFunction() {
+    let mainElement = document.querySelector('main');
+    let FrontpicDivElement = document.createElement('div');
+    FrontpicDivElement.classList.add('DashboardPic');
+    FrontpicDivElement.append(document.createElement('img'));
+    mainElement.appendChild(FrontpicDivElement);
+    document.getElementById('CupraButton').addEventListener('click', handleClicks);
 }

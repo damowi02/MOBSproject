@@ -1,33 +1,94 @@
 body{
+    padding: 0px;
+    margin: 0px;
     height: 100vh;
     display: grid;
-    grid-template-rows: 8vh auto 20vh;
+    grid-template-rows: 10vh auto 10vh;
     grid-template-areas: "header""main""footer";
     grid-template-columns: auto;
-    background-color: rgba(68, 59, 59, 0.4);
-    font-family: 'Helvetica Neue', sans-serif;
+    background-color: rgba(83, 53, 19, 0.534);
+    font-family: Impact, Haettenschweiler, Franklin Gothic Bold, Charcoal, Helvetica Inserat, Bitstream Vera Sans Bold, Arial Black, sans serif;
   
 }
  
 header{
    grid-area: header;
    display: grid;
-   grid-template-columns: auto auto;
-   grid-template-areas: "Datum Zeit";
+   grid-template-columns: auto 18vh auto ;
+   grid-template-areas: "Date Cupra Time";
  
 }
+.DateTime{
+ font-size: 200%;
+ margin: auto;   
+}
+#CupraButton{
+    grid-area: Cupra;
+    height: 100%;
+    position: relative;
+    object-fit:cover;
+    overflow: hidden;
+}
+
+
  
 main{
     grid-area: main;
 }
- 
+
+main div.DashboardPic{
+    margin: 0px;
+    grid-area: main;
+}
+main div.DashboardPic img{
+    margin: 0px;
+    content: url ("front.jpg");
+    max-height: 100%;
+    max-width:100%;
+}
+
+
+
 footer{
     grid-area: footer;
     display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: repeat(5,20%);
-    grid-template-areas: "Data Navi Cupra Music Setting ";
+    grid-template-columns: 25vh 25vh 25vh;
+    grid-template-areas: "Data Music CarFunction";
+   
 }
+
+.TavascanHome{  
+height:100%;
+width: 100%;
+position:relative;
+}
+
+#DataButton{
+    grid-area:Data;
+    height: 100%;
+    position:relative;
+    font-size: 200%;
+    font-weight: bold;
+    background-color: rgba(83, 53, 19, 0.534);
+}
+#MusicButton{
+    grid-area:Music;
+    height: 100%;
+    position:relative;
+    font-size: 200%;
+    font-weight: bold;
+    background-color: rgba(83, 53, 19, 0.534);
+}
+#CarFunctionButton{
+    grid-area: CarFunction;
+    height: 100%;
+    position:relative;
+    font-size: 200%;
+    font-weight: bold;
+    background-color: rgba(83, 53, 19, 0.534);
+}
+
+/*}
 .DatumundUhrzeit {
     text-align: center;
     font-size: 300%; 
