@@ -16,11 +16,13 @@ header{
    display: grid;
    grid-template-columns: auto auto auto ;
    grid-template-areas: "Date Cupra Time";
+   background-color: black;
  
 }
 .DateTime{
  font-size: 200%;
- margin: auto;   
+ margin: auto;
+ color: white;   
 }
 #CupraButton{
     grid-area: Cupra;
@@ -39,46 +41,85 @@ main{
     height:100%;
     width: 100%;
     position:relative;
-    
+    object-fit: cover;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     }
 
 main div.DashboardPic{
 height: 100%;
 position: relative;
+background-color:rgb(54, 53, 53);
 
 }
 main div.DashboardPic img{
-    margin: 0px;
-    content: url("front.jpg");
-    width: 100%;
-    height: auto;
+   margin: 0px;
+   content: url("front.jpg");
+   width: auto;
+   height: auto;
    position: absolute;
+   object-fit: cover;
+   overflow: hidden;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
 }
 
-main div.CarInstrumentInfo{
+main div.DataInfo{
+    display:grid;
     margin:0px;
     font-size: 3em;
-    grid-template-areas: "a b","c d","e f","g h","i j";
+    grid-template-areas: "a b" "c d" "e f" "g h" "i j";
     grid-template-columns:50% 50%;
     grid-template-rows: repeat(5,20%);
-    background-color:  rgba(83, 53, 19, 0.534);
+    background-color:  rgb(54, 53, 53);
+    color:white;
 }
 
-/*main div.CarLockUnlockFunction{
-grid-area: main;
-grid-template-areas: "Lock Unlock";
-grid-template-columns: 50% 50%;
+#Geschwindigkeit{
+    grid-area:a;
 }
 
-main.div.CarLockUnlock{
-    grid-area: Lock;
-    height: 100%;
-    position: relative;
-    font-size: 3em;
-}*/
+#Verbrauch{
+    grid-area:c;
+}
+
+#Feuchtigkeit{
+    grid-area: e;
+}
+
+#Temperatur{
+    grid-area: g;
+}
+
+#Druck{
+    grid-area: i;
+}
+
+main div.CarLockUnlockFunction{
+display:grid;
+grid-area: "Lock Unlock";
+grid-template-columns: auto auto ;
+grid-template-rows: 100%;
+}
+
+main div.SingleWindowFunction{
+display:grid;
+grid-area: "Up Down";
+grid-template-columns: auto auto auto auto;
+grid-template-rows: 100%;
+}
+
+main div.AllWindowFunction{
+display: grid;
+grid-area: "Up Down";
+grid-template-columns: auto auto;
+grid-template-rows: 100%;
+
+}
+
 
 footer{
     grid-area: footer;
@@ -94,7 +135,8 @@ footer{
     position:relative;
     font-size: 200%;
     font-weight: bold;
-    background-color: rgba(88, 49, 2, 0.753);
+    background-color: black;
+    color: white;
 }
 #MusicButton{
     grid-area:Music;
@@ -102,7 +144,8 @@ footer{
     position:relative;
     font-size: 200%;
     font-weight: bold;
-    background-color: rgba(88, 49, 2, 0.753);
+    background-color: black;
+    color: white;
 }
 #CarFunctionButton{
     grid-area: CarFunction;
@@ -110,97 +153,6 @@ footer{
     position:relative;
     font-size: 200%;
     font-weight: bold;
-    background-color:rgba(88, 49, 2, 0.753);
-}
-
-/*}
-.DatumundUhrzeit {
-    text-align: center;
-    font-size: 300%; 
-    margin: auto;
-    border-color: black;
-    border-radius: 15px;
-    color: whitesmoke;
-    background-color: black; 
-    }
-.CupraHome {
-    height: 100%;
-    position: relative;
-}
-.CupraFront{
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-}
-.CarInstrument{
-    display:none;
-    height: 100%;
-    grid-area:"Gas Verbrauch","Velocity KMH","Temperature GradCelsius","Humidity Feuchtigkeit","Pressure Pascal";
-    grid-template-columns: 50% 50%;
-    grid-template-rows: repeat(5,20%);
-}
-.DataInfo{
-    height: 100%;
-    position: relative;
-}
-.Data{
-    max-width: 15%;
-    height: auto;
-    position: absolute;
-    border-radius: 15px;
-    top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-}
-.NaviFront{
-    height: 100%;
-    display: none;
-    position: relative; 
-}
-iframe{
-position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-}
- 
-.MusicFront{
-    display: none;
-    height: 100%;
-    position: relative;
-} 
-
-.button{
- height: 100%;
- position: relative;
- }
-.icons{
-    max-width: 60%;
-  height: auto;
-  display: flex;
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%);
- border-radius: 20px;
-}
- 
-#DataB{
-    grid-area: Data;  
-}
-#NaviB{
-    grid-area: Navi;   
-}
-#CupraB{
-    grid-area: Cupra;   
-}
-#MusicB{
-    grid-area: Music;  
-}
-#SettingB{
-    grid-area: Setting;  
+    background-color: black;
+    color: white;
 }

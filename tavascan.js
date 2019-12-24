@@ -80,6 +80,10 @@ function HomeFunction() {
 
     mainElement.innerHTML = "";
 
+    let DataInfoDiv = document.createElement("div");
+    DataInfoDiv.classList.add("DataInfo")
+    mainElement.appendChild(DataInfoDiv);
+
     for (let i=0; i<5; i++){
 
         let DataDiv = document.createElement("div");
@@ -88,14 +92,24 @@ function HomeFunction() {
         
         
         
-        if(i === 0){ DataDiv.innerHTML = "Speed: " + " "  ;}
-        else if( i===1){DataDiv.innerHTML ="Gas";}
-        else if( i===2){DataDiv.innerHTML ="Humidity";}
-        else if( i===3){DataDiv.innerHTML ="Temperature";}
-        else if( i===4){DataDiv.innerHTML ="Pressure";}
+        if(i === 0){ DataDiv.innerHTML = "Speed: " + " "  ;
+                     DataDiv.id = "Geschwindigkeit";
+                    }
+        else if( i===1){DataDiv.innerHTML ="Gas: ";
+                       DataDiv.id = "Verbrauch";
+                        }
+        else if( i===2){DataDiv.innerHTML ="Humidity: ";
+                        DataDiv.id = "Feuchtigkeit";
+                        }
+        else if( i===3){DataDiv.innerHTML ="Temperature: ";
+                        DataDiv.id = "Temperatur";
+                        }
+        else if( i===4){DataDiv.innerHTML ="Pressure: ";
+                        DataDiv.id = "Druck";
+                        }
         else{DataDiv.innerHTML="";}
 
-        mainElement.appendChild(DataDiv);
+        DataInfoDiv.appendChild(DataDiv);
     }
 }
 
@@ -111,43 +125,92 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
     LockDiv.classList.add("CarLockUnlockFunction");
     mainElement.appendChild(LockDiv);
 
-    //LockDiv.setAttribute("style","display:inline;width:500px");
 
-    let WindowDiv = document.createElement("div");
-    WindowDiv.classList.add("WindowFunction");
-    mainElement.appendChild(WindowDiv);
+    let SingleWindowDiv = document.createElement("div");
+    SingleWindowDiv.classList.add("SingleWindowFunction");
+    mainElement.appendChild(SingleWindowDiv);
+
+    let AllWindowDiv =document.createElement("div");
+    AllWindowDiv.classList.add("AllWindowFunction");
+    mainElement.appendChild(AllWindowDiv);
 
 
     for (let i=0; i<2; i++){
 
-        let UnlockLockDiv = document.createElement("div");
+        let UnlockLockDiv = document.createElement("button");
 
         UnlockLockDiv.classList.add("CarLockUnlock");
-        UnlockLockDiv.style.display ="inline";
+        //UnlockLockDiv.style.display ="inline";
         
         
         
-        if(i === 0){ UnlockLockDiv.innerHTML = "Lock";
-                    UnlockLockDiv.style.float = "left";
-                    UnlockLockDiv.style.marginLeft = "25%";
-                    UnlockLockDiv.style.fontSize = "2em";
-                    UnlockLockDiv.style.marginTop = "10%";
-                    UnlockLockDiv.id="Lock";
-        }
-        else if( i===1){UnlockLockDiv.innerHTML ="Unlock";
-                        UnlockLockDiv.style.float = "right";
-                        UnlockLockDiv.style.marginRight = "25%";
+        if(i === 0){ UnlockLockDiv.innerHTML = "Lock Car";
+                     UnlockLockDiv.style.fontSize = "2em";
+                     UnlockLockDiv.id="Lock";
+                        }
+        else if( i===1){UnlockLockDiv.innerHTML ="Unlock Car";
                         UnlockLockDiv.style.fontSize = "2em";
-                        UnlockLockDiv.style.marginTop = "10%";
                         UnlockLockDiv.id="Unlock";
-
-        }
+                            }
         else{DataDiv.innerHTML="";}
 
         LockDiv.appendChild(UnlockLockDiv);
     }
-}
 
+
+    for (let i=0; i<4; i++){
+
+        let SingleWindowButton = document.createElement("button");
+
+        SingleWindowButton.classList.add("SingleWindowUse");
+        
+        if (i === 0){ SingleWindowButton.innerHTML = "Left Window Up";
+                      SingleWindowButton.style.fontSize = "2em";
+                      SingleWindowButton.id="LeftWindowUp";
+                        }
+        else if (i === 1){ SingleWindowButton.innerHTML = "Right Window Up";
+                           SingleWindowButton.style.fontSize = "2em";
+                           SingleWindowButton.id="RightWindowUp";
+                            }
+        else if (i === 2){ SingleWindowButton.innerHTML = "Left Window Down";
+                           SingleWindowButton.style.fontSize = "2em";
+                           SingleWindowButton.id="LeftWindowDown";
+                            }
+        else if (i === 3){ SingleWindowButton.innerHTML = "Right Window Down";
+                           SingleWindowButton.style.fontSize = "2em";
+                           SingleWindowButton.id="RightWindowDown";
+                            }
+        else{SingleWindowButton.innerHTML="";}
+
+        SingleWindowDiv.appendChild(SingleWindowButton);
+
+    }
+
+    for (let i=0; i<2; i++){
+
+        let AllWindowButton = document.createElement("button");
+
+        AllWindowButton.classList.add("AllWindowFunction");
+        //UnlockLockDiv.style.display ="inline";
+        
+        
+        
+        if(i === 0){ AllWindowButton.innerHTML = "All Windows Up";
+                     AllWindowButton.style.fontSize = "2em";
+                     AllWindowButton.id="AllWindowUp";
+                        }
+        else if( i===1){AllWindowButton.innerHTML ="All Windows Down";
+                        AllWindowButton.style.fontSize = "2em";
+                        AllWindowButton.id="AllWindowDown";
+                            }
+        else{AllWindowButton.innerHTML="";}
+
+        AllWindowDiv.appendChild(AllWindowButton);
+    }
+
+ }
+
+    
 
 
 
