@@ -67,6 +67,18 @@ main div.CarInstrumentInfo{
     background-color:  rgba(83, 53, 19, 0.534);
 }
 
+/*main div.CarLockUnlockFunction{
+grid-area: main;
+grid-template-areas: "Lock Unlock";
+grid-template-columns: 50% 50%;
+}
+
+main.div.CarLockUnlock{
+    grid-area: Lock;
+    height: 100%;
+    position: relative;
+    font-size: 3em;
+}*/
 
 footer{
     grid-area: footer;
