@@ -111,6 +111,12 @@ function HomeFunction() {
 
         DataInfoDiv.appendChild(DataDiv);
     }
+
+    //async function CatchCarData(){
+       // const response = await fetch ("");
+       // const json = await response.json();
+
+   // }
 }
 
 document.getElementById("CarFunctionButton").addEventListener("click",handleClicks);
@@ -210,7 +216,8 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
 
  }
 
-    
+//192.168.1.104  
+//192.168.2.110  
 
 
 
