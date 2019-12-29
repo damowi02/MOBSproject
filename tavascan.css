@@ -82,20 +82,40 @@ main div.DataInfo{
     grid-area:a;
 }
 
+#SpeedData{
+    grid-area: b;
+}
+
 #Verbrauch{
     grid-area:c;
+}
+
+#GasData{
+    grid-area: d;
 }
 
 #Feuchtigkeit{
     grid-area: e;
 }
 
+#HumidityData{
+    grid-area: f;
+}
+
 #Temperatur{
     grid-area: g;
 }
 
+#TemperatureData{
+    grid-area: h;
+}
+
 #Druck{
     grid-area: i;
+}
+
+#PressureData{
+    grid-area: j;
 }
 
 main div.CarLockUnlockFunction{

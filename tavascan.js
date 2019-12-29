@@ -84,7 +84,7 @@ function HomeFunction() {
     DataInfoDiv.classList.add("DataInfo")
     mainElement.appendChild(DataInfoDiv);
 
-    for (let i=0; i<5; i++){
+    for (let i=0; i<9; i++){
 
         let DataDiv = document.createElement("div");
 
@@ -95,27 +95,48 @@ function HomeFunction() {
         if(i === 0){ DataDiv.innerHTML = "Speed: " + " "  ;
                      DataDiv.id = "Geschwindigkeit";
                     }
-        else if( i===1){DataDiv.innerHTML ="Gas: ";
+        else if( i===1){DataDiv.innerHTML =" ";
+                    DataDiv.id = "SpeedData";
+                     }          
+        else if( i===2){DataDiv.innerHTML ="Gas: ";
                        DataDiv.id = "Verbrauch";
                         }
-        else if( i===2){DataDiv.innerHTML ="Humidity: ";
+        else if( i===3){DataDiv.innerHTML =" ";
+                       DataDiv.id = "GasData";
+                        }
+        else if( i===4){DataDiv.innerHTML ="Humidity: ";
                         DataDiv.id = "Feuchtigkeit";
                         }
-        else if( i===3){DataDiv.innerHTML ="Temperature: ";
+        else if( i===5){DataDiv.innerHTML =" ";
+                       DataDiv.id = "HumidityData";
+                        }
+        else if( i===6){DataDiv.innerHTML ="Temperature: ";
                         DataDiv.id = "Temperatur";
                         }
-        else if( i===4){DataDiv.innerHTML ="Pressure: ";
+        else if( i===7){DataDiv.innerHTML =" ";
+                       DataDiv.id = "TempData";
+                        }
+        else if( i===8){DataDiv.innerHTML ="Pressure: ";
                         DataDiv.id = "Druck";
+                        }
+        else if( i===9){DataDiv.innerHTML =" ";
+                       DataDiv.id = "PressureData";
                         }
         else{DataDiv.innerHTML="";}
 
         DataInfoDiv.appendChild(DataDiv);
     }
 
+    //CathCarData();
+
     //async function CatchCarData(){
        // const response = await fetch ("");
        // const json = await response.json();
-
+       //document.getElementbyId("SpeedData").innerHTML = json.speed + " " + "km/h";
+      //document.getElementbyId("GasData").innerHTML = json.consuption + " " + "l/100km";
+      //document.getElementbyId("HumidityData").innerHTML = Math.round(json.humidity) + " " + "g/m³";
+      //document.getElementbyId("TempData").innerHTML = Math.round(json.temp) + " " + "°C";
+      //document.getElementbyId("PressureData").innerHTML = Math.round(json.pressure) + " " + "Pa";
    // }
 }
 
@@ -216,6 +237,22 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
 
  }
 
+ //document.getElementById("Lock").addEventListener("click", handleClicks);
+ //document.getElementById("Unlock").addEventListener("click", handleClicks);
+ //function LockUnlockCar(){
+     //if (event.target.id == "Lock"){
+         //document.getElementById("Lock").style.backgroundColor = "red";
+
+         //fetch("");
+         //}
+     //else if(event.target.id == "Unlock"){
+         //document.getElementById("Unlock").style.backgroundColor = "green"
+         //fetch(" ");
+         //}
+    //else{" ";}
+
+     //}
+ //}
 //192.168.1.104  
 //192.168.2.110  
 
