@@ -4,7 +4,8 @@ function DatumZeit(){
     var d = today.getDate();
     var m = today.getMonth() + 1;
     var y = today.getFullYear();
-
+    if(d<10){d = "0" + d;}
+    else{d;};
     if(m<10){ m = "0" + m;}
     else{m};
 
@@ -50,6 +51,9 @@ function handleClicks(event) {
             ControlCarFunctions();
             break;
 
+        
+        
+
     }
 }
 
@@ -71,7 +75,7 @@ function HomeFunction() {
 }
 
 
-
+//var update_DrivingData;
  document.getElementById("DataButton").addEventListener("click",handleClicks);
 
  function ShowDataInfo(){
@@ -84,7 +88,7 @@ function HomeFunction() {
     DataInfoDiv.classList.add("DataInfo")
     mainElement.appendChild(DataInfoDiv);
 
-    for (let i=0; i<9; i++){
+    for (let i=0; i<10; i++){
 
         let DataDiv = document.createElement("div");
 
@@ -92,7 +96,7 @@ function HomeFunction() {
         
         
         
-        if(i === 0){ DataDiv.innerHTML = "Speed: " + " "  ;
+        if(i === 0){ DataDiv.innerHTML = "Speed: ";
                      DataDiv.id = "Geschwindigkeit";
                     }
         else if( i===1){DataDiv.innerHTML =" ";
@@ -127,18 +131,23 @@ function HomeFunction() {
         DataInfoDiv.appendChild(DataDiv);
     }
 
-    //CathCarData();
+    //var update_DrivingData = setInterval(CatchCarData, 2000);
+    //function CatchCarData(){
+        fetch("http://192.168.178.160:5000/status")
+            .then(resp => resp.json())
+            .then(function (data) {
+                 console.log(data);
+                document.getElementById("SpeedData").innerHTML = data.speed + " " + "km/h";
+                document.getElementById("GasData").innerHTML = data.consumption + " " + "l/100km";
+                document.getElementById("HumidityData").innerHTML = Math.round(data.humidity) + " " + "g/m³";
+                document.getElementById("TempData").innerHTML = Math.round(data.temp) + " " + "°C";
+                document.getElementById("PressureData").innerHTML = Math.round(data.pressure) + " " + "Pa";
+            });
+        
+    //}
+ }
+       
 
-    //async function CatchCarData(){
-       // const response = await fetch ("");
-       // const json = await response.json();
-       //document.getElementbyId("SpeedData").innerHTML = json.speed + " " + "km/h";
-      //document.getElementbyId("GasData").innerHTML = json.consuption + " " + "l/100km";
-      //document.getElementbyId("HumidityData").innerHTML = Math.round(json.humidity) + " " + "g/m³";
-      //document.getElementbyId("TempData").innerHTML = Math.round(json.temp) + " " + "°C";
-      //document.getElementbyId("PressureData").innerHTML = Math.round(json.pressure) + " " + "Pa";
-   // }
-}
 
 document.getElementById("CarFunctionButton").addEventListener("click",handleClicks);
 
@@ -167,24 +176,28 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
         let UnlockLockDiv = document.createElement("button");
 
         UnlockLockDiv.classList.add("CarLockUnlock");
-        //UnlockLockDiv.style.display ="inline";
         
         
         
         if(i === 0){ UnlockLockDiv.innerHTML = "Lock Car";
                      UnlockLockDiv.style.fontSize = "2em";
                      UnlockLockDiv.id="Lock";
+                     UnlockLockDiv.style.backgroundColor = "grey";
                         }
         else if( i===1){UnlockLockDiv.innerHTML ="Unlock Car";
                         UnlockLockDiv.style.fontSize = "2em";
                         UnlockLockDiv.id="Unlock";
+                        UnlockLockDiv.style.backgroundColor = "grey";
                             }
         else{DataDiv.innerHTML="";}
 
         LockDiv.appendChild(UnlockLockDiv);
-    }
 
+    };
 
+    mainElement.addEventListener("click", LockUnlockCar);
+        
+ 
     for (let i=0; i<4; i++){
 
         let SingleWindowButton = document.createElement("button");
@@ -194,18 +207,22 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
         if (i === 0){ SingleWindowButton.innerHTML = "Left Window Up";
                       SingleWindowButton.style.fontSize = "2em";
                       SingleWindowButton.id="LeftWindowUp";
+                      SingleWindowButton.style.backgroundColor="grey";
                         }
         else if (i === 1){ SingleWindowButton.innerHTML = "Right Window Up";
                            SingleWindowButton.style.fontSize = "2em";
                            SingleWindowButton.id="RightWindowUp";
+                           SingleWindowButton.style.backgroundColor="grey";
                             }
         else if (i === 2){ SingleWindowButton.innerHTML = "Left Window Down";
                            SingleWindowButton.style.fontSize = "2em";
                            SingleWindowButton.id="LeftWindowDown";
+                           SingleWindowButton.style.backgroundColor="grey";
                             }
         else if (i === 3){ SingleWindowButton.innerHTML = "Right Window Down";
                            SingleWindowButton.style.fontSize = "2em";
                            SingleWindowButton.id="RightWindowDown";
+                           SingleWindowButton.style.backgroundColor="grey";
                             }
         else{SingleWindowButton.innerHTML="";}
 
@@ -213,50 +230,114 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
 
     }
 
+    mainElement.addEventListener("click", SingleWindowAction);
+
     for (let i=0; i<2; i++){
 
         let AllWindowButton = document.createElement("button");
 
         AllWindowButton.classList.add("AllWindowFunction");
-        //UnlockLockDiv.style.display ="inline";
+        
         
         
         
         if(i === 0){ AllWindowButton.innerHTML = "All Windows Up";
                      AllWindowButton.style.fontSize = "2em";
                      AllWindowButton.id="AllWindowUp";
+                     AllWindowButton.style.backgroundColor = "grey";
                         }
         else if( i===1){AllWindowButton.innerHTML ="All Windows Down";
                         AllWindowButton.style.fontSize = "2em";
                         AllWindowButton.id="AllWindowDown";
+                        AllWindowButton.style.backgroundColor = "grey";
                             }
         else{AllWindowButton.innerHTML="";}
 
         AllWindowDiv.appendChild(AllWindowButton);
     }
 
+    mainElement.addEventListener("click", AllWindowAction);
+
  }
 
- //document.getElementById("Lock").addEventListener("click", handleClicks);
- //document.getElementById("Unlock").addEventListener("click", handleClicks);
- //function LockUnlockCar(){
-     //if (event.target.id == "Lock"){
-         //document.getElementById("Lock").style.backgroundColor = "red";
 
-         //fetch("");
-         //}
-     //else if(event.target.id == "Unlock"){
-         //document.getElementById("Unlock").style.backgroundColor = "green"
-         //fetch(" ");
-         //}
-    //else{" ";}
+ function LockUnlockCar(event){
 
-     //}
- //}
-//192.168.1.104  
-//192.168.2.110  
+    var a = event.target.id;
+        if (a == "Lock"){
+            fetch("http://192.168.178.160:5000/action/lock");
+            document.getElementById("Lock").style.backgroundColor = "red";
+            document.getElementById("Unlock").style.backgroundColor = "grey";
+            document.getElementById("LeftWindowUp").style.visibility ="hidden";
+            document.getElementById("RightWindowUp").style.visibility ="hidden";
+            document.getElementById("LeftWindowDown").style.visibility ="hidden";
+            document.getElementById("RightWindowDown").style.visibility ="hidden";
+            document.getElementById("AllWindowUp").style.visibility ="hidden";
+            document.getElementById("AllWindowDown").style.visibility ="hidden";
+            console.log("Car is locked");
+        }
+        else if (a == "Unlock"){
+            fetch("http://192.168.178.160:5000/action/unlock");
+           document.getElementById("Unlock").style.backgroundColor = "green";
+           document.getElementById("Lock").style.backgroundColor = "grey";
+           document.getElementById("LeftWindowUp").style.visibility ="visible";
+           document.getElementById("RightWindowUp").style.visibility ="visible";
+           document.getElementById("LeftWindowDown").style.visibility ="visible";
+           document.getElementById("RightWindowDown").style.visibility ="visible";
+           document.getElementById("AllWindowUp").style.visibility ="visible";
+           document.getElementById("AllWindowDown").style.visibility ="visible";
+           console.log("Car is Unlocked");
+        };
+     };
+  
+
+function SingleWindowAction(event){
+    var a = event.target.id;
+
+    if ( a == "LeftWindowUp"){
+        fetch("http://192.168.178.160:5000/window/LeftUp");
+        document.getElementById("LeftWindowUp").style.backgroundColor = "red";
+        document.getElementById("LeftWindowDown").style.backgroundColor = "grey";
+        console.log("Left Window closed");
+    }
+    else if ( a == "LeftWindowDown"){
+        fetch("http://192.168.178.160:5000/window/LeftDown");
+        document.getElementById("LeftWindowDown").style.backgroundColor = "green";
+        document.getElementById("LeftWindowUp").style.backgroundColor = "grey";
+        console.log("Left Window open");
+    }
+    else if ( a == "RightWindowUp"){
+        fetch("http://192.168.178.160:5000/window/RightUp");
+        document.getElementById("RightWindowUp").style.backgroundColor = "red";
+        document.getElementById("RightWindowDown").style.backgroundColor = "grey";
+        console.log("Right Window closed");
+    }
+    else if ( a == "RightWindowDown"){
+        fetch("http://192.168.178.160:5000/window/RightDown");
+        document.getElementById("RightWindowDown").style.backgroundColor = "green";
+        document.getElementById("RightWindowUp").style.backgroundColor = "grey";
+        console.log("Right Window open");
+    };
+
+};
 
 
+function AllWindowAction(event){
+    var a = event.target.id;
+    if ( a == "AllWindowUp"){
+        fetch("http://192.168.178.160:5000/window/AllUp");
+        document.getElementById("AllWindowUp").style.backgroundColor = "red";
+        document.getElementById("AllWindowDown").style.backgroundColor = "grey";
+        console.log("All Windows closed");
+    }
+    else if ( a == "AllWindowDown"){
+        fetch("http://192.168.178.160:5000/window/AllDown");
+        document.getElementById("AllWindowDown").style.backgroundColor = "green";
+        document.getElementById("AllWindowUp").style.backgroundColor = "grey";
+        console.log("All Windows open");
+    };
+
+};
 
 
 
