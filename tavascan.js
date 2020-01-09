@@ -33,6 +33,8 @@ function DatumZeit(){
 
 function handleClicks(event) {
 
+    clearInterval(UpdateData);
+
     switch (event.target.id) {
 
         case "CupraButton":
@@ -49,10 +51,7 @@ function handleClicks(event) {
         
         case "CarFunctionButton":
             ControlCarFunctions();
-            break;
-
-        
-        
+            break;     
 
     }
 }
@@ -75,7 +74,7 @@ function HomeFunction() {
 }
 
 
-//var update_DrivingData;
+var UpdateData;
  document.getElementById("DataButton").addEventListener("click",handleClicks);
 
  function ShowDataInfo(){
@@ -131,8 +130,8 @@ function HomeFunction() {
         DataInfoDiv.appendChild(DataDiv);
     }
 
-    //var update_DrivingData = setInterval(CatchCarData, 2000);
-    //function CatchCarData(){
+    var UpdateData = setInterval(CatchCarData, 2000);
+    function CatchCarData(){
         fetch("http://192.168.178.160:5000/status")
             .then(resp => resp.json())
             .then(function (data) {
@@ -144,7 +143,7 @@ function HomeFunction() {
                 document.getElementById("PressureData").innerHTML = Math.round(data.pressure) + " " + "Pa";
             });
         
-    //}
+    }
  }
        
 
