@@ -46,7 +46,7 @@ function handleClicks(event) {
             break;
         
         case "MusicButton":
-            PlayMusic();
+            Music();
             break;
         
         case "CarFunctionButton":
@@ -130,7 +130,7 @@ var UpdateData;
         DataInfoDiv.appendChild(DataDiv);
     }
 
-    var UpdateData = setInterval(CatchCarData, 2000);
+     UpdateData = setInterval(CatchCarData, 2000);
     function CatchCarData(){
         fetch("http://192.168.178.160:5000/status")
             .then(resp => resp.json())
@@ -261,9 +261,8 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
 
 
  function LockUnlockCar(event){
-
-    var a = event.target.id;
-        if (a == "Lock"){
+    
+        if (event.target.id == "Lock"){
             fetch("http://192.168.178.160:5000/action/lock");
             document.getElementById("Lock").style.backgroundColor = "red";
             document.getElementById("Unlock").style.backgroundColor = "grey";
@@ -275,7 +274,7 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
             document.getElementById("AllWindowDown").style.visibility ="hidden";
             console.log("Car is locked");
         }
-        else if (a == "Unlock"){
+        else if (event.target.id == "Unlock"){
             fetch("http://192.168.178.160:5000/action/unlock");
            document.getElementById("Unlock").style.backgroundColor = "green";
            document.getElementById("Lock").style.backgroundColor = "grey";
@@ -291,27 +290,26 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
   
 
 function SingleWindowAction(event){
-    var a = event.target.id;
 
-    if ( a == "LeftWindowUp"){
+    if ( event.target.id == "LeftWindowUp"){
         fetch("http://192.168.178.160:5000/window/LeftUp");
         document.getElementById("LeftWindowUp").style.backgroundColor = "red";
         document.getElementById("LeftWindowDown").style.backgroundColor = "grey";
         console.log("Left Window closed");
     }
-    else if ( a == "LeftWindowDown"){
+    else if ( event.target.id == "LeftWindowDown"){
         fetch("http://192.168.178.160:5000/window/LeftDown");
         document.getElementById("LeftWindowDown").style.backgroundColor = "green";
         document.getElementById("LeftWindowUp").style.backgroundColor = "grey";
         console.log("Left Window open");
     }
-    else if ( a == "RightWindowUp"){
+    else if ( event.target.id == "RightWindowUp"){
         fetch("http://192.168.178.160:5000/window/RightUp");
         document.getElementById("RightWindowUp").style.backgroundColor = "red";
         document.getElementById("RightWindowDown").style.backgroundColor = "grey";
         console.log("Right Window closed");
     }
-    else if ( a == "RightWindowDown"){
+    else if ( event.target.id == "RightWindowDown"){
         fetch("http://192.168.178.160:5000/window/RightDown");
         document.getElementById("RightWindowDown").style.backgroundColor = "green";
         document.getElementById("RightWindowUp").style.backgroundColor = "grey";
@@ -322,22 +320,34 @@ function SingleWindowAction(event){
 
 
 function AllWindowAction(event){
-    var a = event.target.id;
-    if ( a == "AllWindowUp"){
+
+    if ( event.target.id == "AllWindowUp"){
         fetch("http://192.168.178.160:5000/window/AllUp");
         document.getElementById("AllWindowUp").style.backgroundColor = "red";
         document.getElementById("AllWindowDown").style.backgroundColor = "grey";
+        document.getElementById("RightWindowUp").style.backgroundColor = "red";
+        document.getElementById("LeftWindowUp").style.backgroundColor = "red";
         console.log("All Windows closed");
     }
-    else if ( a == "AllWindowDown"){
+    else if ( event.target.id == "AllWindowDown"){
         fetch("http://192.168.178.160:5000/window/AllDown");
         document.getElementById("AllWindowDown").style.backgroundColor = "green";
         document.getElementById("AllWindowUp").style.backgroundColor = "grey";
+        document.getElementById("RightWindowDown").style.backgroundColor = "green";
+        document.getElementById("LeftWindowDown").style.backgroundColor = "green";
         console.log("All Windows open");
     };
 
 };
 
+document.getElementById("MusicButton").addEventListener("click",handleClicks);
+
+ function Music(){
+
+    let mainElement = document.querySelector("main");
+
+    mainElement.innerHTML = "";
+ }
 
 
 
