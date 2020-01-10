@@ -119,6 +119,28 @@ main div.DataInfo{
     grid-area: j;
 }
 
+.Player{
+    margin: auto;
+    max-width: 80%;
+
+}
+
+table {
+margin-left: 5%;
+margin-right: 5%;
+}
+
+td,tr{
+    border: 4px solid grey;
+    font-size: 200%;
+    padding: 5%;
+}
+
+th{
+    font-size: 250%;
+    font-weight: bold;
+}
+
 main div.CarLockUnlockFunction{
 display:grid;
 grid-area: "Lock Unlock";

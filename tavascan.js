@@ -186,7 +186,7 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
         else if( i===1){UnlockLockDiv.innerHTML ="Unlock Car";
                         UnlockLockDiv.style.fontSize = "2em";
                         UnlockLockDiv.id="Unlock";
-                        UnlockLockDiv.style.backgroundColor = "grey";
+                        UnlockLockDiv.style.backgroundColor = "green";
                             }
         else{DataDiv.innerHTML="";}
 
@@ -206,12 +206,12 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
         if (i === 0){ SingleWindowButton.innerHTML = "Left Window Up";
                       SingleWindowButton.style.fontSize = "2em";
                       SingleWindowButton.id="LeftWindowUp";
-                      SingleWindowButton.style.backgroundColor="grey";
+                      SingleWindowButton.style.backgroundColor="red";
                         }
         else if (i === 1){ SingleWindowButton.innerHTML = "Right Window Up";
                            SingleWindowButton.style.fontSize = "2em";
                            SingleWindowButton.id="RightWindowUp";
-                           SingleWindowButton.style.backgroundColor="grey";
+                           SingleWindowButton.style.backgroundColor="red";
                             }
         else if (i === 2){ SingleWindowButton.innerHTML = "Left Window Down";
                            SingleWindowButton.style.fontSize = "2em";
@@ -243,7 +243,7 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
         if(i === 0){ AllWindowButton.innerHTML = "All Windows Up";
                      AllWindowButton.style.fontSize = "2em";
                      AllWindowButton.id="AllWindowUp";
-                     AllWindowButton.style.backgroundColor = "grey";
+                     AllWindowButton.style.backgroundColor = "red";
                         }
         else if( i===1){AllWindowButton.innerHTML ="All Windows Down";
                         AllWindowButton.style.fontSize = "2em";
@@ -266,25 +266,39 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
             fetch("http://192.168.178.160:5000/action/lock");
             document.getElementById("Lock").style.backgroundColor = "red";
             document.getElementById("Unlock").style.backgroundColor = "grey";
-            document.getElementById("LeftWindowUp").style.visibility ="hidden";
-            document.getElementById("RightWindowUp").style.visibility ="hidden";
-            document.getElementById("LeftWindowDown").style.visibility ="hidden";
-            document.getElementById("RightWindowDown").style.visibility ="hidden";
-            document.getElementById("AllWindowUp").style.visibility ="hidden";
-            document.getElementById("AllWindowDown").style.visibility ="hidden";
+
+            let SingleWindowClass = document.getElementsByClassName("SingleWindowUse");
+            for (let i=0; i < SingleWindowClass.length; i++){
+                SingleWindowClass[i].style.visibility="hidden";
+           } 
+
+           let AllWindowClass = document.getElementsByClassName("AllWindowFunction");
+           for (let i=0; i < AllWindowClass.length; i++){
+               AllWindowClass[i].style.visibility="hidden";
+           }
             console.log("Car is locked");
         }
         else if (event.target.id == "Unlock"){
             fetch("http://192.168.178.160:5000/action/unlock");
            document.getElementById("Unlock").style.backgroundColor = "green";
            document.getElementById("Lock").style.backgroundColor = "grey";
-           document.getElementById("LeftWindowUp").style.visibility ="visible";
-           document.getElementById("RightWindowUp").style.visibility ="visible";
-           document.getElementById("LeftWindowDown").style.visibility ="visible";
-           document.getElementById("RightWindowDown").style.visibility ="visible";
-           document.getElementById("AllWindowUp").style.visibility ="visible";
-           document.getElementById("AllWindowDown").style.visibility ="visible";
-           console.log("Car is Unlocked");
+
+           let SingleWindowClass = document.getElementsByClassName("SingleWindowUse"); 
+           for (let i=0; i < SingleWindowClass.length; i++){
+            SingleWindowClass[i].style.visibility="visible";
+            SingleWindowClass[0].style.backgroundColor="red";
+            SingleWindowClass[1].style.backgroundColor="red";
+            SingleWindowClass[2].style.backgroundColor="grey";
+            SingleWindowClass[3].style.backgroundColor="grey";
+            } 
+
+            let AllWindowClass = document.getElementsByClassName("AllWindowFunction");
+           for (let i=0; i < AllWindowClass.length; i++){
+            AllWindowClass[i].style.visibility="visible";
+            document.getElementById("AllWindowUp").style.backgroundColor="red";
+            document.getElementById("AllWindowDown").style.backgroundColor="grey";
+            }
+            console.log("Car is Unlocked");
         };
      };
   
@@ -295,24 +309,28 @@ function SingleWindowAction(event){
         fetch("http://192.168.178.160:5000/window/LeftUp");
         document.getElementById("LeftWindowUp").style.backgroundColor = "red";
         document.getElementById("LeftWindowDown").style.backgroundColor = "grey";
+        document.getElementById("AllWindowDown").style.backgroundColor = "grey";
         console.log("Left Window closed");
     }
     else if ( event.target.id == "LeftWindowDown"){
         fetch("http://192.168.178.160:5000/window/LeftDown");
         document.getElementById("LeftWindowDown").style.backgroundColor = "green";
         document.getElementById("LeftWindowUp").style.backgroundColor = "grey";
+        document.getElementById("AllWindowUp").style.backgroundColor = "grey";
         console.log("Left Window open");
     }
     else if ( event.target.id == "RightWindowUp"){
         fetch("http://192.168.178.160:5000/window/RightUp");
         document.getElementById("RightWindowUp").style.backgroundColor = "red";
         document.getElementById("RightWindowDown").style.backgroundColor = "grey";
+        document.getElementById("AllWindowDown").style.backgroundColor = "grey";
         console.log("Right Window closed");
     }
     else if ( event.target.id == "RightWindowDown"){
         fetch("http://192.168.178.160:5000/window/RightDown");
         document.getElementById("RightWindowDown").style.backgroundColor = "green";
         document.getElementById("RightWindowUp").style.backgroundColor = "grey";
+        document.getElementById("AllWindowUp").style.backgroundColor = "grey";
         console.log("Right Window open");
     };
 
@@ -327,6 +345,8 @@ function AllWindowAction(event){
         document.getElementById("AllWindowDown").style.backgroundColor = "grey";
         document.getElementById("RightWindowUp").style.backgroundColor = "red";
         document.getElementById("LeftWindowUp").style.backgroundColor = "red";
+        document.getElementById("RightWindowDown").style.backgroundColor = "grey";
+        document.getElementById("LeftWindowDown").style.backgroundColor = "grey";
         console.log("All Windows closed");
     }
     else if ( event.target.id == "AllWindowDown"){
@@ -335,6 +355,8 @@ function AllWindowAction(event){
         document.getElementById("AllWindowUp").style.backgroundColor = "grey";
         document.getElementById("RightWindowDown").style.backgroundColor = "green";
         document.getElementById("LeftWindowDown").style.backgroundColor = "green";
+        document.getElementById("RightWindowUp").style.backgroundColor = "grey";
+        document.getElementById("LeftWindowUp").style.backgroundColor = "grey";
         console.log("All Windows open");
     };
 
@@ -342,12 +364,86 @@ function AllWindowAction(event){
 
 document.getElementById("MusicButton").addEventListener("click",handleClicks);
 
+var Songs; 
+
  function Music(){
 
-    let mainElement = document.querySelector("main");
+    let mainElement = document.querySelector("main");               //create Main Page for MusicFunction
 
     mainElement.innerHTML = "";
- }
+
+    let MusicPlaylist = document.createElement("table");           //Creating a Table for the Playlist
+    MusicPlaylist.id="Table"
+    mainElement.appendChild(MusicPlaylist);
+    let RowTable = document.createElement("tr");
+    RowTable.id="TableRows";
+    let HeadlineTable = document.createElement("th");
+    HeadlineTable.innerHTML="Damons Playlist";
+    RowTable.appendChild(HeadlineTable);
+    MusicPlaylist.appendChild(RowTable);
+
+    let Playbutton = document.createElement("div");                 //Creating Playbutton via Controls Attribute
+    Playbutton.classList.add("Player");
+    mainElement.appendChild(Playbutton);
+    let Audio = document.createElement("audio");
+    Audio.setAttribute("controls", "controls");
+    Audio.id="TurnUp";
+    Playbutton.appendChild(Audio);
+
+
+
+    fetch("http://192.168.178.160:5000/music")                    //Fetching music
+    .then(function (response) {
+        response.text()
+            .then(function (text) {
+                Songs = JSON.parse(text);                         //Parse the Song string into a JS Object
+                console.log(text);
+
+                GetMusicIntoTable();
+            });
+    });
+
+ 
+
+    var Click = 0;
+    var Path = [];
+    var Artist = [];
+    var Song = [];
+ 
+function GetMusicIntoTable() {
+ 
+ 
+        Click += 1;
+        if (Click === 1) {
+            let SongList = document.getElementById("Table");
+ 
+        for (var i = 0; i < Songs.length; i++) {
+            var list = SongList.insertRow(1);
+            list.id = i;
+            var cell = list.insertCell(0);
+            //cell.id = i;
+            cell.innerHTML = Songs[i].artist + " " + "-" + " " + Songs[i].title;
+            Path[i] = Songs[i].path;
+            Artist[i] = Songs[i].artist;
+            Song[i] = Songs[i].title;
+            console.log(Path[i]);
+            console.log(Artist[i]);
+            console.log(Song[i]);
+ 
+ 
+        };
+    };
+};
+
+};
+
+
+
+ 
+
+ //192.168.178.160
+ //192.168.0.75
+
 
 
 
