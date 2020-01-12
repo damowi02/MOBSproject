@@ -68,7 +68,9 @@ function HomeFunction() {
 
     let FrontpicDivElement = document.createElement('div');
     FrontpicDivElement.classList.add('DashboardPic');
-    FrontpicDivElement.append(document.createElement('img'));
+    let Pic = document.createElement("img");
+    Pic.id= "FrontPic"
+    FrontpicDivElement.appendChild(Pic);
 
     mainElement.appendChild(FrontpicDivElement);    
 }
@@ -372,24 +374,30 @@ var Songs;
 
     mainElement.innerHTML = "";
 
-    let MusicPlaylist = document.createElement("table");           //Creating a Table for the Playlist
-    MusicPlaylist.id="Table"
-    mainElement.appendChild(MusicPlaylist);
-    let RowTable = document.createElement("tr");
-    RowTable.id="TableRows";
-    let HeadlineTable = document.createElement("th");
-    HeadlineTable.innerHTML="Damons Playlist";
-    RowTable.appendChild(HeadlineTable);
-    MusicPlaylist.appendChild(RowTable);
+    let MusicDiv = document.createElement("div");
+    MusicDiv.classList.add("MusicDiv");
+    mainElement.appendChild(MusicDiv);
 
-    let Playbutton = document.createElement("div");                 //Creating Playbutton via Controls Attribute
-    Playbutton.classList.add("Player");
-    mainElement.appendChild(Playbutton);
+    var CurrentSong = document.createElement("div");
+    CurrentSong.classList.add("CurrentSongPlaying");
+    MusicDiv.appendChild(CurrentSong);
+    
+    let DivUl = document.createElement("div");
+    DivUl.classList.add("Div2");
+    MusicDiv.appendChild(DivUl);
+    var MusicPlaylist = document.createElement("ul");
+    MusicPlaylist.id = "Table";
+    DivUl.appendChild(MusicPlaylist);
+
+    
+    let PlayButton = document.createElement("div");                 //Creating Playbutton via Controls Attribute
+    PlayButton.classList.add("Player");
+    MusicDiv.appendChild(PlayButton);
     let Audio = document.createElement("audio");
     Audio.setAttribute("controls", "controls");
     Audio.id="TurnUp";
-    Playbutton.appendChild(Audio);
-
+    PlayButton.appendChild(Audio);
+    
 
 
     fetch("http://192.168.178.160:5000/music")                    //Fetching music
@@ -397,45 +405,81 @@ var Songs;
         response.text()
             .then(function (text) {
                 Songs = JSON.parse(text);                         //Parse the Song string into a JS Object
-                console.log(text);
+                console.log(Songs);
 
                 GetMusicIntoTable();
             });
     });
-
  
 
-    var Click = 0;
-    var Path = [];
-    var Artist = [];
-    var Song = [];
  
-function GetMusicIntoTable() {
- 
- 
-        Click += 1;
-        if (Click === 1) {
-            let SongList = document.getElementById("Table");
- 
-        for (var i = 0; i < Songs.length; i++) {
-            var list = SongList.insertRow(1);
-            list.id = i;
-            var cell = list.insertCell(0);
-            //cell.id = i;
-            cell.innerHTML = Songs[i].artist + " " + "-" + " " + Songs[i].title;
-            Path[i] = Songs[i].path;
-            Artist[i] = Songs[i].artist;
-            Song[i] = Songs[i].title;
-            console.log(Path[i]);
-            console.log(Artist[i]);
-            console.log(Song[i]);
- 
- 
+    function GetMusicIntoTable(){
+
+        for (i=0; i < Songs.length; i++){
+         let MusicRow = document.createElement("li");
+         MusicRow.id=i;
+         let NewRow = document.createTextNode(Songs[i].artist + " - " + Songs[i].title);
+         MusicRow.appendChild(NewRow);
+         MusicPlaylist.appendChild(MusicRow);
         };
+
+        document.getElementById("Table").addEventListener("click", SelectMusic);
+    };
+ 
+ 
+    var MusicSelected;
+
+    function SelectMusic(event){
+     let track = document.getElementById(event.target.id);
+     MusicSelected=track.id;
+     CurrentSong.innerHTML = "Aktueller Song: "+ Songs[MusicSelected].artist + " - " + Songs[MusicSelected].title;
     };
 };
 
-};
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+    //var Click = 0;
+    //var Path = [];
+    //var Artist = [];
+    //var Song = [];
+ 
+//function GetMusicIntoTable() {
+ 
+ 
+        //Click += 1;
+        //if (Click === 1) {
+            //let SongList = document.getElementById("Table");
+ 
+        //for (var i = 0; i < Songs.length; i++) {
+            //var list = SongList.insertRow(1);
+            //list.id = i;
+            //var cell = list.insertCell(0);
+            //cell.id = i;
+            //cell.innerHTML = Songs[i].artist + " " + "-" + " " + Songs[i].title;
+            //Path[i] = Songs[i].path;
+            //Artist[i] = Songs[i].artist;
+            //Song[i] = Songs[i].title;
+            //console.log(Path[i]);
+            //console.log(Artist[i]);
+            //console.log(Song[i]);
+ 
+ 
+        //};
+    //};
+//};
+
+
 
 
 

@@ -34,6 +34,7 @@ header{
 main{
     grid-area: main;
     display:grid;
+    background-color:rgb(54, 53, 53);
   
 }
 
@@ -41,32 +42,28 @@ main{
     height:100%;
     width: 100%;
     position:relative;
-    object-fit: cover;
-    overflow: hidden;
+   /* object-fit: cover;
+    overflow: hidden;*/
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     }
 
 main div.DashboardPic{
-height: 100%;
-position: relative;
-background-color:rgb(54, 53, 53);
-
+    display: grid;
+    background-color:rgb(54, 53, 53);
+    grid-template-areas: "a b c" "d e f" "g h i";
+    grid-template-columns: 2fr 8fr 2fr;
+    grid-template-rows: 1fr 10fr 1fr;
 }
-main div.DashboardPic img{
-   margin: 0px;
-   content: url("front.jpg");
-   height:100%;
-    width: 100%;
-    position:relative;
-    object-fit: cover;
-    overflow: hidden;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
+#FrontPic{
+    content: url("front.jpg");
+    grid-area:e;
+    height:100%;
+    position: relative;
 }
+
 
 main div.DataInfo{
     display:grid;
@@ -119,27 +116,34 @@ main div.DataInfo{
     grid-area: j;
 }
 
+main div.MusicDiv{
+    display:grid;
+    grid-template-columns: 10% 1fr 10% 1fr 10% 1fr;
+    grid-template-rows: 10% 50% 10% 5% 20% ;
+    color: white;
+}
+
 .Player{
-    margin: auto;
-    max-width: 80%;
-
+    display:grid;
+    position: center;
+    grid-area: 3 / 3 / span 1 / span 1;
 }
 
-table {
-margin-left: 5%;
-margin-right: 5%;
+.CurrentSongPlaying{
+    display:grid;
+    text-align: center;
+    grid-area: 1 / 3 / span 1 / span 4;
 }
 
-td,tr{
-    border: 4px solid grey;
+.Div2{
+    text-align: center;
+    border: 3px solid black;
     font-size: 200%;
-    padding: 5%;
+    overflow-y: scroll;
+    grid-template-rows: 100%;
+    grid-area: 2 / 2 / span 1 / span 4;
 }
 
-th{
-    font-size: 250%;
-    font-weight: bold;
-}
 
 main div.CarLockUnlockFunction{
 display:grid;

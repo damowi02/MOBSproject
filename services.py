@@ -55,9 +55,44 @@ def music():
         'path': 'music/Tears_for_Fears_-_Shout.mp3'
     },
     {
+        'title': 'BOP',
+        'artist': 'DaBaby',
+        'path': 'music/Tears_for_Fears_-_Shout.mp3'
+    },
+    {
+        'title': 'Yallah Goodbye',
+        'artist': 'Summer Cem feat. Gringo',
+        'path': 'music/Tears_for_Fears_-_Shout.mp3'
+    },
+    {
+        'title': '679',
+        'artist': 'Fatty Wap',
+        'path': 'music/Tears_for_Fears_-_Shout.mp3'
+    },
+    {
+        'title': 'SickoMode',
+        'artist': 'Travis Scott',
+        'path': 'music/Tears_for_Fears_-_Shout.mp3'
+    },
+    {
+        'title': 'Drogba (Joanna)',
+        'artist': 'Afro B',
+        'path': 'music/Tears_for_Fears_-_Shout.mp3'
+    },
+    {
         'title': 'Our Darkness',
         'artist': 'Anne Clark',
         'path': 'music/Anna_Clark_-_Our_Darkness.mp3'
+    },
+    {
+        'title': 'Zenit',
+        'artist': 'Raf Camora',
+        'path': 'music/Tears_for_Fears_-_Shout.mp3'
+    },
+    {
+        'title': 'Walk it Talk it',
+        'artist': 'Migos',
+        'path': 'music/Tears_for_Fears_-_Shout.mp3'
     },
 	{
         'title': 'Fade to Grey',
