@@ -68,10 +68,6 @@ function HomeFunction() {
 
     let FrontpicDivElement = document.createElement('div');
     FrontpicDivElement.classList.add('DashboardPic');
-    let Pic = document.createElement("img");
-    Pic.id= "FrontPic"
-    FrontpicDivElement.appendChild(Pic);
-
     mainElement.appendChild(FrontpicDivElement);    
 }
 
@@ -370,7 +366,7 @@ var Songs;
 
  function Music(){
 
-    let mainElement = document.querySelector("main");               //create Main Page for MusicFunction
+    let mainElement = document.querySelector("main");               
 
     mainElement.innerHTML = "";
 
@@ -390,7 +386,7 @@ var Songs;
     DivUl.appendChild(MusicPlaylist);
 
     
-    let PlayButton = document.createElement("div");                 //Creating Playbutton via Controls Attribute
+    let PlayButton = document.createElement("div");                 
     PlayButton.classList.add("Player");
     MusicDiv.appendChild(PlayButton);
     let Audio = document.createElement("audio");
@@ -400,11 +396,11 @@ var Songs;
     
 
 
-    fetch("http://192.168.178.160:5000/music")                    //Fetching music
+    fetch("http://192.168.178.160:5000/music")                    
     .then(function (response) {
         response.text()
             .then(function (text) {
-                Songs = JSON.parse(text);                         //Parse the Song string into a JS Object
+                Songs = JSON.parse(text);                         
                 console.log(Songs);
 
                 GetMusicIntoTable();
@@ -435,55 +431,6 @@ var Songs;
      CurrentSong.innerHTML = "Aktueller Song: "+ Songs[MusicSelected].artist + " - " + Songs[MusicSelected].title;
     };
 };
-
-
-
-
-
-
- 
-
- 
-
- 
-
- 
-
-    //var Click = 0;
-    //var Path = [];
-    //var Artist = [];
-    //var Song = [];
- 
-//function GetMusicIntoTable() {
- 
- 
-        //Click += 1;
-        //if (Click === 1) {
-            //let SongList = document.getElementById("Table");
- 
-        //for (var i = 0; i < Songs.length; i++) {
-            //var list = SongList.insertRow(1);
-            //list.id = i;
-            //var cell = list.insertCell(0);
-            //cell.id = i;
-            //cell.innerHTML = Songs[i].artist + " " + "-" + " " + Songs[i].title;
-            //Path[i] = Songs[i].path;
-            //Artist[i] = Songs[i].artist;
-            //Song[i] = Songs[i].title;
-            //console.log(Path[i]);
-            //console.log(Artist[i]);
-            //console.log(Song[i]);
- 
- 
-        //};
-    //};
-//};
-
-
-
-
-
- 
 
  //192.168.178.160
  //192.168.0.75

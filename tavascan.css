@@ -3,7 +3,7 @@ body{
     margin: 0px;
     height: 100vh;
     display: grid;
-    grid-template-rows: 10vw auto 10vw;
+    grid-template-rows: 10% 80% 10%;
     grid-template-areas: "header""main""footer";
     grid-template-columns: auto;
     background-color: rgba(83, 53, 19, 0.534);
@@ -38,7 +38,7 @@ main{
   
 }
 
-.TavascanHome{  
+.TavascanHome{ 
     height:100%;
     width: 100%;
     position:relative;
@@ -50,17 +50,16 @@ main{
 main div.DashboardPic{
     display: grid;
     background-color:rgb(54, 53, 53);
-    grid-template-areas: "a b c" "d e f" "g h i";
-    grid-template-columns: 2fr 8fr 2fr;
-    grid-template-rows: 1fr 10fr 1fr;
+    content: url("front.jpg");
+    height:100%;
+    width: 100%;
+    position:relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
 }
 
-#FrontPic{
-    content: url("front.jpg");
-    grid-area:e;
-    height:100%;
-    position: relative;
-}
 
 
 main div.DataInfo{
@@ -116,30 +115,35 @@ main div.DataInfo{
 
 main div.MusicDiv{
     display:grid;
-    grid-template-columns: 10% 1fr 10% 1fr 10% 1fr;
-    grid-template-rows: 10% 50% 10% 5% 20% ;
+    grid-template-columns: 10% 20% 40% 20% 10%;
+    grid-template-rows: 10% 20% 20% 20% 20% 10%;
     color: white;
 }
 
 .Player{
     display:grid;
     position: center;
-    grid-area: 3 / 3 / span 1 / span 1;
+    justify-content: center;
+    align-items: center; 
+    grid-area: 4 / 3 / span 1 / span 1;
 }
 
 .CurrentSongPlaying{
     display:grid;
+    font-size: 150%;
     text-align: center;
-    grid-area: 1 / 2 / span 1 / span 3;
+    justify-content: center;
+    align-items: center;
+    grid-area: 1 / 3 / span 1 / span 1;
 }
 
 .Div2{
     text-align: center;
     border: 3px solid black;
-    font-size: 200%;
+    font-size: 150%;
     overflow-y: scroll;
     grid-template-rows: 100%;
-    grid-area: 2 / 2 / span 1 / span 4;
+    grid-area: 2 / 2 / span 2 / span 3;
 }
 
 
