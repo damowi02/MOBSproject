@@ -150,21 +150,21 @@ main div.MusicDiv{
 main div.CarLockUnlockFunction{
 display:grid;
 grid-area: "Lock Unlock";
-grid-template-columns: auto auto ;
+grid-template-columns: 50% 50% ;
 grid-template-rows: 100%;
 }
 
 main div.SingleWindowFunction{
 display:grid;
 grid-area: "Up Down";
-grid-template-columns: auto auto auto auto;
+grid-template-columns: repeat(4,25%);
 grid-template-rows: 100%;
 }
 
 main div.AllWindowFunction{
 display: grid;
 grid-area: "Up Down";
-grid-template-columns: auto auto;
+grid-template-columns: 50% 50%;
 grid-template-rows: 100%;
 
 }
@@ -173,7 +173,7 @@ grid-template-rows: 100%;
 footer{
     grid-area: footer;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 33.33%);
     grid-template-areas: "Data Music CarFunction";
    
 }

@@ -255,7 +255,7 @@ document.getElementById("CarFunctionButton").addEventListener("click",handleClic
 
     mainElement.addEventListener("click", AllWindowAction);
 
- }
+}
 
 
  function LockUnlockCar(event){
